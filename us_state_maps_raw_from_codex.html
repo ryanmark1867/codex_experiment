@@ -1,0 +1,31 @@
+/* create a selection list of the states of the united states */
+var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 
+'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 
+'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 
+'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 
+'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 
+'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 
+'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 
+'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 
+'West Virginia', 'Wisconsin', 'Wyoming'];
+var stateSelect = document.createElement('select');
+stateSelect.id = 'stateSelect';
+for (var i = 0; i < states.length; i++) {
+  var stateOption = document.createElement('option');
+  stateOption.value = states[i];
+  stateOption.innerHTML = states[i];
+  stateSelect.appendChild(stateOption);
+}
+document.body.appendChild(stateSelect);
+
+/* display an image of a map of Alabama sized 40% from https://www.nationsonline.org/maps/USA/Alabama_map.jpg. call the image "map_image" */
+var map_image = document.createElement('img');
+map_image.src = 'https://www.nationsonline.org/maps/USA/Alabama_map.jpg';
+map_image.style.width = '40%';
+document.body.appendChild(map_image);
+
+/* when a state is selected from the selection list, replace map_image with the image of the map of that state. Replace spaces with underscores in the state names */
+stateSelect.addEventListener('change', function() {
+  var state = stateSelect.value;
+  map_image.src = 'https://www.nationsonline.org/maps/USA/' + state.replace(/ /g, '_') + '_map.jpg';
+});
